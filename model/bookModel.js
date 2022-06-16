@@ -8,8 +8,7 @@ const bookSchema = mongoose.Schema({
   author: {
     type: String,
     required: true
-  },
-  timestamps: true
+  }
 })
 
 const Book = mongoose.model('Book', bookSchema);
