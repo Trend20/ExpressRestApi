@@ -1,11 +1,23 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const app = express();
+
+require('dotenv').config();
+
+// connect to the mongodb database
+const db_uri = process.env.DATABASE_URI;
+mongoose.connect(db_uri, {useNewUrlParser: true})
+        .then(() => {
+          console.log('Connected to the database successfully!')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
 
 // import the book router
 const bookRouter = require('./routes/books');
-
 // use the middleware
 app.use(cors());
 app.use(express.json());
