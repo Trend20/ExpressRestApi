@@ -8,6 +8,14 @@ const bookSchema = mongoose.Schema({
   author: {
     type: String,
     required: true
+  },
+  yearPublished: {
+    type: Number,
+    required: true
+  },
+  pages: {
+    type: Number,
+    required: true
   }
 })
 

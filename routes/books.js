@@ -8,28 +8,30 @@ const Book = require('../model/bookModel')
 
 // create a book
 router.route('/add').post((req, res) =>{
-    book.title = req.body.title
-    book.author = req.body.author
+    const title = req.body.title;
+    const author = req.body.author;
+    const yearPublished = req.body.yearPublished;
+    const pages = req.body.pages;
 
-    const book = new Book({title, author});
+    const newBook = new Book({title, author, yearPublished, pages});
 
-    book.save()
-        .then((res) => res.json('Book added'))
-        .catch(err => res.status(400).json('Error', err));
+    newBook.save()
+        .then(() => res.json('Book added'))
+        .catch(err => res.status(400).json('Error:' + err));
 })
 
 // get all books
 router.route('/').get((req, res) =>{
   Book.find()
       .then(books => res.json(books))
-      .catch(err => res.status(400).json('Error ' , err))
+      .catch(err => res.status(400).json('Error: ' + err))
 })
 
 // get specific book
 router.route('/:id').get((req, res) =>{
   Book.findById(req.params.id)
       .then(books => res.json(books))
-      .catch(err => res.status(400).json('Error ' , err))
+      .catch(err => res.status(400).json('Error: ' + err))
 })
 
 
@@ -41,9 +43,9 @@ router.route('/update/:id').post((req, res) =>{
         book.title = req.body.title
         book.author = req.body.author
       })
-    book.save()
+      Book.save()
       .then((res) => res.json('Book added'))
-      .catch(err => res.status(400).json('Error', err));
+      .catch(err => res.status(400).json('Error: ' + err));
 })
 
 
@@ -51,7 +53,7 @@ router.route('/update/:id').post((req, res) =>{
 router.route('/:id').delete((req, res) =>{
     Book.findByIdAndDelete(req.params.id)
       .then((res) => res.json('Book Deleted'))
-      .catch(err => res.status(400).json('Error', err));
+      .catch(err => res.status(400).json('Error: ' + err));
 })
 
 

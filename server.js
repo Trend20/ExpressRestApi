@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // use the book router
-app.use('/book', bookRouter);
+app.use('/books', bookRouter);
 
 
 
