@@ -56,7 +56,7 @@ router.route('/update/:id').post((req, res) =>{
 // delete book
 router.route('/:id').delete((req, res) =>{
     Book.findByIdAndDelete(req.params.id)
-      .then((res) => res.json('Book Deleted'))
+      .then(() => res.json('Book Deleted'))
       .catch(err => res.status(400).json('Error: ' + err));
 })
 
