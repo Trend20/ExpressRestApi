@@ -61,3 +61,13 @@ POST: http://localhost:5050/api/v1/book/update/:id
 ```
 DELETE: http://localhost:5050/api/v1/book/:id
 ```
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## License
+
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
