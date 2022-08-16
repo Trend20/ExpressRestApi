@@ -1,7 +1,6 @@
 # NodeJS Books RESTFUL api
 
 [![License](https://img.shields.io/badge/License-MIT-green.svg)]()
-![Twitter URL](https://img.shields.io/twitter/follow/dev_enock_?label=Follow&style=social)
 
 
 A minimal, secure RESTFUL api for NodeJS. This project is basically a books api that demonstrates all the CRUD operations.
