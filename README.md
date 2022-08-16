@@ -38,25 +38,25 @@ app.use('/api/v1/books', customRouter);
 
 # API Endpoints
 
-# GET ALL BOOKS
+### GET ALL BOOKS
 
 ```
 GET http://localhost:5050/api/v1/books
 ```
 
-# GET A SINGLE BOOK
+### GET A SINGLE BOOK
 
 ```
 GET http://localhost:5050/api/v1/book/:id
 ```
 
-# UPDATE A BOOK
+### UPDATE A BOOK
 
 ```
 POST http://localhost:5050/api/v1/book/update/:id
 ```
 
-# DELETE A BOOK
+### DELETE A BOOK
 
 ```
 DELETE http://localhost:5050/api/v1/book/:id
