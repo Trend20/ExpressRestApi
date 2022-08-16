@@ -41,23 +41,23 @@ app.use('/api/v1/books', customRouter);
 ### GET ALL BOOKS
 
 ```
-GET http://localhost:5050/api/v1/books
+GET: http://localhost:5050/api/v1/books
 ```
 
 ### GET A SINGLE BOOK
 
 ```
-GET http://localhost:5050/api/v1/book/:id
+GET: http://localhost:5050/api/v1/book/:id
 ```
 
 ### UPDATE A BOOK
 
 ```
-POST http://localhost:5050/api/v1/book/update/:id
+POST: http://localhost:5050/api/v1/book/update/:id
 ```
 
 ### DELETE A BOOK
 
 ```
-DELETE http://localhost:5050/api/v1/book/:id
+DELETE: http://localhost:5050/api/v1/book/:id
 ```
