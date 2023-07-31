@@ -65,6 +65,10 @@ POST: http://localhost:5050/api/v1/book/update/:id
 DELETE: http://localhost:5050/api/v1/book/:id
 ```
 
+
+### Project Tests
+For this project, we will implement the tests using **Mocha**, **Chai** and **Sinon**.
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
