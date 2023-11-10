@@ -12,6 +12,15 @@ exports.getAllUser = async (req, res) => {
 };
 
 // get a single user by id
+exports.getUser = async (req, res) => {
+  const user = await User.findById(req.params.id);
+  res.status(200).json({
+    status: "success",
+    data: {
+      user,
+    },
+  });
+};
 
 // create a user
 
