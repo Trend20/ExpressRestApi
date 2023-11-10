@@ -23,6 +23,15 @@ exports.getUser = async (req, res) => {
 };
 
 // create a user
+exports.addUser = async (req, res) => {
+  const newUser = User.create(req.body);
+  res.status(200).json({
+    status: "success",
+    data: {
+      user: newUser,
+    },
+  });
+};
 
 // update a user
 
