@@ -1,14 +1,14 @@
 {
   "name": "books-directory",
   "version": "1.0.0",
-  "description": "",
+  "description": "Books API built using NodeJS, Express and MongoDB",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["books", "api"],
+  "author": "Enock Omondi",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
