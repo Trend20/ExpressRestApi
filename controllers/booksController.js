@@ -1,56 +1,78 @@
-const Book = require('../model/bookModel')
+const Book = require("../model/bookModel");
 
 // creating a new book
-function addBook(req, res){
-  const title = req.body.title;
-  const author = req.body.author;
-  const yearPublished = req.body.yearPublished;
-  const pages = req.body.pages;
-
-  const newBook = new Book({title, author, yearPublished, pages});
-
-  newBook.save()
-      .then(() => res.json('Book added'))
-      .catch(err => res.status(400).json('Error:' + err));
-}
+exports.addBook = async (req, res) => {
+  try {
+    const newBook = await Book.create(req.body);
+    res.status(201).json({
+      status: "success",
+      data: {
+        book: newBook,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 // get all books
-function getBooks(req, res){
-  Book.find()
-      .then(books => res.json(books))
-      .catch(err => res.status(400).json('Error: ' + err))
-}
-
+exports.getBooks = async (req, res) => {
+  try {
+    const books = await Book.find();
+    res.status(200).json({
+      status: "success",
+      data: {
+        books,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 // get a single book
-function getSingleBook(req, res){
-  Book.findById(req.params.id)
-      .then(books => res.json(books))
-      .catch(err => res.status(400).json('Error: ' + err))
-}
+exports.getSingleBook = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    res.status(200).json({
+      status: "success",
+      data: {
+        book,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 // update a book
-function updateBook(req, res){
+function updateBook(req, res) {
   Book.findById(req.params.id)
-      .then(book => {
-        book.title = req.body.title
-        book.author = req.body.author
-        book.yearPublished = req.body.yearPublished
-        book.pages = req.body.pages
+    .then((book) => {
+      book.title = req.body.title;
+      book.author = req.body.author;
+      book.yearPublished = req.body.yearPublished;
+      book.pages = req.body.pages;
 
-      book.save()
-      .then(() => res.json('Book updated'))
-      .catch(err => res.status(400).json('Error: ' + err));
-      })
-      .catch(err => res.status(400).json('Error: ' + err));
+      book
+        .save()
+        .then(() => res.json("Book updated"))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
 }
 
 // delete a book
-function deleteBook(req, res){
-  Book.findByIdAndDelete(req.params.id)
-    .then(() => res.json('Book Deleted'))
-    .catch(err => res.status(400).json('Error: ' + err));
-}
+exports.deleteBook = async (req, res) => {
+  try {
+    await Book.findByIdAndDelete(res.params.id);
+    res.status(204).json({
+      status: "success",
+      data: null,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-
-module.exports = { addBook, getBooks, getSingleBook, updateBook, deleteBook};
+module.exports = { addBook, getBooks, getSingleBook, updateBook, deleteBook };
