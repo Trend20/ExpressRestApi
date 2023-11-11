@@ -5,11 +5,17 @@ const morgan = require("morgan");
 const app = express();
 
 require("dotenv").config();
+mongoose.set("strictQuery", true);
+
+// use the middleware
+app.use(cors());
+app.use(express.json());
+app.use(morgan("dev"));
 
 // connect to the mongodb database
 const db_uri = process.env.DATABASE_URI;
 mongoose
-  .connect(db_uri, { useNewUrlParser: true })
+  .connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to the database successfully!");
   })
@@ -18,13 +24,7 @@ mongoose
   });
 
 // import the book router
-const bookRouter = require("./routes/books");
-// use the middleware
-app.use(cors());
-app.use(express.json());
-app.use(morgan());
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
+const bookRouter = require("./routes/bookRoute");
 
 // use the book router
 app.use("/api/v1/books", bookRouter);

@@ -46,8 +46,8 @@ exports.getSingleBook = async (req, res) => {
 };
 
 // update a book
-function updateBook(req, res) {
-  Book.findById(req.params.id)
+exports.updateBook = async (req, res) => {
+  await Book.findById(req.params.id)
     .then((book) => {
       book.title = req.body.title;
       book.author = req.body.author;
@@ -60,7 +60,7 @@ function updateBook(req, res) {
         .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));
-}
+};
 
 // delete a book
 exports.deleteBook = async (req, res) => {
@@ -75,4 +75,4 @@ exports.deleteBook = async (req, res) => {
   }
 };
 
-module.exports = { addBook, getBooks, getSingleBook, updateBook, deleteBook };
+// module.exports = { addBook, getBooks, getSingleBook, updateBook, deleteBook };
