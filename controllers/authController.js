@@ -67,6 +67,3 @@ exports.resetPassword = async (req, res) => {
     res.status(500).json({ message: "Password reset failed" });
   }
 };
-
-// logout
-exports.logout = (req, res) => {};
