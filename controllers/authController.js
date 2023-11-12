@@ -52,6 +52,20 @@ exports.login = async (req, res) => {
   }
 };
 
-// logout
-
 // reset password
+exports.resetPassword = async (req, res) => {
+  try {
+    const { username, newPassword, confirmPassword } = req.body;
+    if (newPassword !== confirmPassword) {
+      res.status(400).json({ message: "Password do not match" });
+    }
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    await User.updateOne({ username }, { password: hashedPassword });
+    res.status(201).json({ message: "Password reset successful" });
+  } catch (error) {
+    res.status(500).json({ message: "Password reset failed" });
+  }
+};
+
+// logout
+exports.logout = (req, res) => {};
