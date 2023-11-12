@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    name: {
+    username: {
       type: String,
       required: [true, "Please provide name!"],
     },
@@ -17,6 +17,11 @@ const userSchema = new mongoose.Schema(
     confirmPassword: {
       type: String,
       required: [true, "Please confirm password!"],
+    },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
     },
   },
   { timestamps: true }
