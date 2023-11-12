@@ -1,11 +1,6 @@
-const connectDB = require("./config/db.js");
 const app = require("./app");
-require("dotenv").config();
 
-// database connection
-connectDB();
-
-// initialize a port
+// get port form .ENV
 const PORT = process.env.PORT || 5050;
 
 // listen to the port
