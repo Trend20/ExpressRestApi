@@ -8,5 +8,5 @@ exports.generateToken = async (user) => {
       expiresIn: "1h",
     }
   );
-  return token;
+  return res.json({ token, role: user.role });
 };
