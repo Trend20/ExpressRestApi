@@ -1,6 +1,13 @@
 const express = require("express");
 
 const router = express.Router();
+const {
+  addBook,
+  getBooks,
+  getSingleBook,
+  updateBook,
+  deleteBook,
+} = require("../controllers/booksController");
 
 // set up all application routes
 
