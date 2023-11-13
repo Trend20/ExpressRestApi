@@ -74,5 +74,3 @@ exports.deleteBook = async (req, res) => {
     console.error(error);
   }
 };
-
-// module.exports = { addBook, getBooks, getSingleBook, updateBook, deleteBook };
