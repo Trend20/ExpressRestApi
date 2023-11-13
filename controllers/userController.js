@@ -11,7 +11,7 @@ exports.getAllUser = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error(error);
+    res.status(500).json({ message: error });
   }
 };
 
@@ -26,7 +26,7 @@ exports.getUser = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error(error);
+    res.status(500).json({ message: error });
   }
 };
 
@@ -41,11 +41,26 @@ exports.addUser = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error(error);
+    res.status(500).json({ message: error });
   }
 };
 
 // update a user
+exports.updateUser = async (req, res) => {
+  try {
+    const { username, email, password, role } = req.body;
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      res.status(404).json({
+        message: "User not found",
+      });
+    }
+    User.findByIdAndUpdate(user, { username, email, password, role });
+    res.status(201).json({ message: "User updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+};
 
 // delete a user
 exports.deleteUser = async (req, res) => {
@@ -56,6 +71,6 @@ exports.deleteUser = async (req, res) => {
       data: null,
     });
   } catch (error) {
-    console.error(error);
+    res.status(500).json({ message: error });
   }
 };
