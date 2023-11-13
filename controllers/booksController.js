@@ -47,19 +47,17 @@ exports.getSingleBook = async (req, res) => {
 
 // update a book
 exports.updateBook = async (req, res) => {
-  await Book.findById(req.params.id)
-    .then((book) => {
-      book.title = req.body.title;
-      book.author = req.body.author;
-      book.yearPublished = req.body.yearPublished;
-      book.pages = req.body.pages;
-
-      book
-        .save()
-        .then(() => res.json("Book updated"))
-        .catch((err) => res.status(400).json("Error: " + err));
-    })
-    .catch((err) => res.status(400).json("Error: " + err));
+  try {
+    const { title, author, yearPublished, pages } = req.body;
+    const book = await Book.findById(req.params.id);
+    if (!book) {
+      res.status(404).json({ message: "Book not found" });
+    }
+    await Book.findByIdAndUpdate(book, { title, author, yearPublished, pages });
+    res.status(201).json({ message: "Book updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
 };
 
 // delete a book

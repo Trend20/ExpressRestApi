@@ -55,7 +55,7 @@ exports.updateUser = async (req, res) => {
         message: "User not found",
       });
     }
-    User.findByIdAndUpdate(user, { username, email, password, role });
+    await User.findByIdAndUpdate(user, { username, email, password, role });
     res.status(201).json({ message: "User updated successfully" });
   } catch (error) {
     res.status(500).json({ message: error });
