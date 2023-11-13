@@ -11,7 +11,7 @@ exports.addBook = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error(error);
+    res.status(500).json({ message: error });
   }
 };
 
@@ -26,7 +26,7 @@ exports.getBooks = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error(error);
+    res.status(500).json({ message: error });
   }
 };
 
@@ -41,7 +41,7 @@ exports.getSingleBook = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error(error);
+    res.status(500).json({ message: error });
   }
 };
 
@@ -71,6 +71,6 @@ exports.deleteBook = async (req, res) => {
       data: null,
     });
   } catch (error) {
-    console.error(error);
+    res.status(500).json({ message: error });
   }
 };
